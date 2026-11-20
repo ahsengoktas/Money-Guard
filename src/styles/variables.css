@@ -1,0 +1,48 @@
+:root {
+    /* Typography */
+    --font-family-base: 'Poppins', sans-serif;
+
+    /* Brand colors */
+    --color-primary: #7000ff;
+    --color-purple: #734aef;
+    --color-accent: #ffc727;
+    --color-blue: #4a56e2;
+
+    /* Text colors */
+    --color-text-primary: #fbfbfb;
+    --color-text-white: #ffffff;
+    --color-text-muted: rgb(255 255 255 / 60%);
+    --color-text-secondary: rgb(255 255 255 / 40%);
+
+    /* Surfaces and borders */
+    --color-surface-purple: #523b7e;
+    --color-surface-purple-transparent: rgb(82 59 126 / 60%);
+    --color-surface-glass: rgb(255 255 255 / 10%);
+    --color-surface-light: #fcfcfc;
+    --color-border: #e0e0e0;
+
+    /* Transaction colors */
+    --color-income: #ffb627;
+    --color-expense: #ff868d;
+
+    /* Statistics chart colors */
+    --color-chart-1: #00ad84;
+    --color-chart-2: #24cca7;
+    --color-chart-3: #81e1ff;
+    --color-chart-4: #4a56e2;
+    --color-chart-5: #6e78e8;
+    --color-chart-6: #c5baff;
+    --color-chart-7: #fd9498;
+    --color-chart-8: #ffd8d0;
+    --color-chart-9: #fed057;
+
+    /* Shared gradients */
+    --gradient-primary: linear-gradient(110deg,
+            #ffc727 0%,
+            #9e40ba 61.46%,
+            #7000ff 90.54%);
+
+    --gradient-background: linear-gradient(180deg,
+            #2e1746 3.19%,
+            #2e225f 100%);
+}
