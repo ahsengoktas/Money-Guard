@@ -2,8 +2,10 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { walletApi, setAuthHeader, clearAuthHeader } from '../../services/api';
 
-const getErrorMessage = (error) =>
-  error.response?.data?.message ?? error.message;
+const getErrorMessage = (error) => {
+  const message = error.response?.data?.message ?? error.message;
+  return Array.isArray(message) ? message.join(', ') : String(message);
+};
 
 // POST /auth/sign-up -> { user, token }
 export const register = createAsyncThunk(
