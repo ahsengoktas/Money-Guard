@@ -1,0 +1,45 @@
+.transactions {
+  --transaction-columns: 80px 45px minmax(90px, 1fr) minmax(100px, 1.4fr) 95px 100px;
+  width: 100%;
+  min-width: 0;
+}
+.tableHeader {
+  display: grid;
+  grid-template-columns: var(--transaction-columns);
+  align-items: center;
+  column-gap: 8px;
+  min-height: 56px;
+  padding: 0 16px;
+  border-radius: 8px;
+  background: var(--color-surface-purple-transparent);
+  color: var(--color-text-primary);
+  font-size: 16px;
+  font-weight: 600;
+}
+.tableHeader span:nth-child(5) { text-align: right; }
+.list {
+  max-height: min(60vh, 600px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+.listItem {
+  padding: 0 16px;
+  border-bottom: 1px solid rgb(255 255 255 / 15%);
+}
+.emptyMessage {
+  padding: 32px 16px;
+  color: var(--color-text-primary);
+  text-align: center;
+}
+@media (max-width: 767px) {
+  .tableHeader { display: none; }
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 520px;
+    scrollbar-width: none;
+  }
+  .list::-webkit-scrollbar { display: none; }
+  .listItem { padding: 0; border: 0; }
+}

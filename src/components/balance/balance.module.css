@@ -1,0 +1,20 @@
+.balance {
+  padding: 8px 20px 12px;
+  border-radius: 8px;
+  background: var(--color-surface-glass);
+  color: var(--color-text-primary);
+}
+.label {
+  color: var(--color-text-muted);
+  font-size: 12px;
+}
+.amount {
+  margin-top: 8px;
+  font-size: 30px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.message {
+  padding: 8px 0;
+  font-size: 14px;
+}

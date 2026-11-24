@@ -1,0 +1,16 @@
+.home {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+  color: var(--color-text-primary);
+}
+.error {
+  padding: 12px;
+  color: var(--color-expense);
+}
+.status {
+  padding: 32px 12px;
+  text-align: center;
+}
