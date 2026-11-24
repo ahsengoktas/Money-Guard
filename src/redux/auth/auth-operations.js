@@ -39,9 +39,11 @@ export const logIn = createAsyncThunk(
 export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
   try {
     await walletApi.delete('/auth/sign-out');
-    clearAuthHeader();
   } catch (error) {
     return thunkAPI.rejectWithValue(getErrorMessage(error));
+  } finally {
+    // TASK-28: the client session ends whatever the backend answers.
+    clearAuthHeader();
   }
 });
 

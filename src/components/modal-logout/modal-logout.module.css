@@ -1,0 +1,70 @@
+/* Mobile: the modal fills the screen below the 60px header. */
+.backdrop {
+  position: fixed;
+  inset: 60px 0 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-background);
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 320px;
+  padding: 0 20px;
+}
+
+.logo {
+  display: none;
+}
+
+.text {
+  max-width: 214px;
+  margin-bottom: 40px;
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--color-text-primary);
+}
+
+@media (min-width: 768px) {
+  .backdrop {
+    inset: 0;
+    background: rgb(0 0 0 / 40%);
+  }
+
+  .modal {
+    max-width: 533px;
+    padding: 60px 62px;
+    border-radius: 8px;
+    background: var(--gradient-background);
+    box-shadow: 0 4px 60px rgb(0 0 0 / 25%);
+  }
+
+  .logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 52px;
+  }
+
+  .logoIcon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .logoText {
+    font-size: 27px;
+    line-height: 1.5;
+    color: var(--color-text-primary);
+  }
+
+  .text {
+    max-width: none;
+    margin-bottom: 52px;
+  }
+}
