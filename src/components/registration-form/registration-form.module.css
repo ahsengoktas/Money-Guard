@@ -1,0 +1,13 @@
+.fields {
+  margin-bottom: 40px;
+}
+
+.progress {
+  margin-top: 4px;
+  filter: drop-shadow(0 1px 8px rgb(255 199 39 / 50%));
+}
+
+/* The register page's "Log in" button has no border in the design. */
+.secondary {
+  border-color: transparent;
+}
