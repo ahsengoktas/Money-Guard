@@ -1,0 +1,111 @@
+.header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding: 0 20px;
+  background-color: rgb(46 23 70 / 70%);
+  box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logoIcon {
+  width: 17px;
+  height: 17px;
+}
+
+.logoText {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.name {
+  max-width: 120px;
+  overflow: hidden;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.exit {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 16px;
+  line-height: 1.5;
+  transition: color 250ms ease;
+}
+
+.exit:hover {
+  color: var(--color-text-primary);
+}
+
+.exitIcon {
+  width: 18px;
+  height: 18px;
+}
+
+/* On mobile the design shows only the icon. */
+.exitText {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .header {
+    height: 80px;
+    padding: 0 32px;
+  }
+
+  .logoIcon {
+    width: 23px;
+    height: 23px;
+  }
+
+  .logoText {
+    font-size: 19px;
+  }
+
+  .user {
+    gap: 12px;
+  }
+
+  .name {
+    max-width: 200px;
+  }
+
+  .exit {
+    height: 30px;
+    padding-left: 12px;
+    border-left: 1px solid var(--color-text-muted);
+  }
+
+  .exitText {
+    display: inline;
+  }
+}
+
+@media (min-width: 1280px) {
+  .header {
+    padding: 0 16px;
+  }
+}

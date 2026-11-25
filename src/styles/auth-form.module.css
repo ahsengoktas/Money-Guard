@@ -1,0 +1,68 @@
+/* Shared by the login and register forms. */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  margin-bottom: 52px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.primary,
+.secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50px;
+  border-radius: 20px;
+  box-shadow: 1px 9px 15px rgb(0 0 0 / 20%);
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition:
+    transform 250ms ease,
+    box-shadow 250ms ease;
+}
+
+.primary:hover,
+.secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 1px 12px 20px rgb(0 0 0 / 30%);
+}
+
+.primary {
+  border: 0;
+  background: var(--gradient-primary);
+  color: var(--color-text-primary);
+}
+
+.primary:disabled {
+  opacity: 0.7;
+  transform: none;
+}
+
+.secondary {
+  border: 1px solid var(--color-blue);
+  background-color: var(--color-surface-light);
+  color: #623f8b;
+}
+
+@media (min-width: 768px) {
+  .actions {
+    width: 300px;
+  }
+}

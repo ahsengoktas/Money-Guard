@@ -2,8 +2,10 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { walletApi, setAuthHeader, clearAuthHeader } from '../../services/api';
 
-const getErrorMessage = (error) =>
-  error.response?.data?.message ?? error.message;
+const getErrorMessage = (error) => {
+  const message = error.response?.data?.message ?? error.message;
+  return Array.isArray(message) ? message.join(', ') : String(message);
+};
 
 // POST /auth/sign-up -> { user, token }
 export const register = createAsyncThunk(
@@ -37,9 +39,11 @@ export const logIn = createAsyncThunk(
 export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
   try {
     await walletApi.delete('/auth/sign-out');
-    clearAuthHeader();
   } catch (error) {
     return thunkAPI.rejectWithValue(getErrorMessage(error));
+  } finally {
+    // TASK-28: the client session ends whatever the backend answers.
+    clearAuthHeader();
   }
 });
 
