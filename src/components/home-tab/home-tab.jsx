@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import {
   addTransaction,
   deleteTransaction,
@@ -31,7 +32,6 @@ export default function HomeTab() {
   const error = useSelector(selectFinanceError);
   const [addOpen, setAddOpen] = useState(false);
   const [editing, setEditing] = useState(null);
-  const [actionError, setActionError] = useState('');
 
   useEffect(() => {
     dispatch(fetchTransactions());
@@ -58,23 +58,17 @@ export default function HomeTab() {
 
   const handleDelete = async (id) => {
     if (isMutating || !window.confirm('Delete this transaction?')) return;
-    setActionError('');
     try {
       await dispatch(deleteTransaction(id)).unwrap();
       refreshFinancialData();
     } catch (message) {
-      setActionError(String(message));
+      toast.error(message instanceof Error ? message.message : String(message));
     }
   };
 
   return (
     <section className={css.home} aria-label="Home transactions">
       <Balance />
-      {actionError && (
-        <p role="alert" className={css.error}>
-          {actionError}
-        </p>
-      )}
       {isLoading ? (
         <p role="status" className={css.status}>
           Loading transactions...

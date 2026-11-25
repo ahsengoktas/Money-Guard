@@ -11,13 +11,20 @@
   min-width: 0;
 }
 .label {
-  display: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 .value {
   overflow-wrap: anywhere;
 }
 .field:nth-child(2) {
-  text-align: center;
+  text-align: left;
+  padding-left: 16px;
 }
 .field:nth-child(5) {
   text-align: right;
@@ -53,7 +60,7 @@
   padding: 4px 12px;
   border: 0;
   border-radius: 20px;
-  background: var(--gradient-primary);
+  background: linear-gradient(110deg, #efb13f, #9e40ba);
   color: var(--color-text-primary);
   font-size: 14px;
   box-shadow: 1px 9px 15px rgb(0 0 0 / 20%);
@@ -68,7 +75,7 @@
     display: flex;
     width: 100%;
     flex-direction: column;
-    padding: 0 20px;
+    padding: 0;
     border-radius: 10px;
     background: var(--color-surface-glass);
     font-size: 16px;
@@ -76,17 +83,26 @@
   .field {
     display: flex;
     width: 100%;
-    min-height: 48px;
+    min-height: 47px;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
+    padding: 8px 20px 8px 15px;
     border-bottom: 1px solid rgb(255 255 255 / 15%);
   }
-  .field:nth-child(5) {
-    border-bottom: 0;
+  .deleteButton {
+    font-size: 12px;
+  }
+  .editText {
+    font-size: 12px;
   }
   .label {
-    display: inline;
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
+    white-space: normal;
     flex-shrink: 0;
     font-weight: 600;
   }
@@ -96,12 +112,13 @@
   }
   .field:nth-child(2) {
     text-align: right;
+    padding-left: 15px;
   }
   .actions {
     width: 100%;
-    min-height: 53px;
+    min-height: 47px;
     justify-content: space-between;
-    padding: 4px 0;
+    padding: 4px 20px 4px 15px;
   }
   .editButton {
     order: 2;
@@ -111,6 +128,9 @@
   }
   .deleteButton {
     order: 1;
+  }
+  .transaction {
+    overflow: hidden;
   }
   .income {
     border-left: 5px solid var(--color-income);

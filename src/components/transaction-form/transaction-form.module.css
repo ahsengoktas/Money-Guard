@@ -1,24 +1,51 @@
+@font-face {
+  font-family: 'Transaction Poppins Semibold';
+  src: url('@fontsource/poppins/files/poppins-latin-600-normal.woff2')
+    format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
 .form {
+  --form-line: rgb(255 255 255 / 30%);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 40px;
+}
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
 }
 .typeSwitch {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
-  margin-bottom: 12px;
-  color: var(--color-text-muted);
+  gap: 20px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+.typeSwitch,
+.amount {
+  font-family: 'Transaction Poppins Semibold', var(--font-family-base);
 }
 .typeSwitch label {
-  display: flex;
-  gap: 6px;
-  align-items: center;
   cursor: pointer;
 }
-.typeSwitch input {
-  accent-color: var(--color-accent);
+.typeSwitch label:has(input:focus-visible) {
+  outline: 2px solid var(--color-text-primary);
+  outline-offset: 4px;
+}
+.typeLabel {
+  color: var(--color-text-muted);
 }
 .activeIncome {
   color: var(--color-income);
@@ -26,42 +53,246 @@
 .activeExpense {
   color: var(--color-expense);
 }
-.label {
-  font-size: 14px;
-  color: var(--color-text-primary);
+.switchTrack {
+  position: relative;
+  flex: 0 0 80px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 24px;
+  background: var(--color-surface-light);
+}
+.switchThumb {
+  position: absolute;
+  top: 50%;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--color-text-white);
+  font-size: 0;
+  font-weight: 400;
+  line-height: 1;
+  transform: translateY(-50%);
+}
+.switchThumb::before,
+.incomeTrack .switchThumb::after {
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  background: currentColor;
+  content: '';
+}
+.incomeTrack .switchThumb::after {
+  transform: rotate(90deg);
+}
+.incomeTrack .switchThumb {
+  left: -2px;
+  background: var(--color-income);
+  box-shadow: 0 5px 12px rgb(255 182 39 / 45%);
+}
+.expenseTrack .switchThumb {
+  right: -2px;
+  background: var(--color-expense);
+  box-shadow: 0 5px 12px rgb(255 134 141 / 45%);
+}
+.field {
+  position: relative;
+  min-width: 0;
+}
+.amountDate {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
 }
 .input {
+  display: block;
   width: 100%;
-  min-height: 38px;
-  padding: 6px 10px;
-  border: 1px solid rgb(255 255 255 / 35%);
-  border-radius: 6px;
-  background: rgb(255 255 255 / 8%);
+  min-width: 0;
+  height: 35px;
+  padding: 0 8px 8px;
+  border: 0;
+  border-bottom: 1px solid var(--form-line);
+  border-radius: 0;
+  background: transparent;
   color: var(--color-text-primary);
-  outline-offset: 2px;
+  font-size: 18px;
+  line-height: 1.5;
 }
-.input option {
-  color: #222;
+.input::placeholder {
+  color: var(--color-text-muted);
+  opacity: 1;
+}
+.input[aria-invalid='true'] {
+  border-bottom-color: var(--color-expense);
+}
+.amount {
+  text-align: center;
+  font-weight: 600;
+}
+.input:focus-visible {
+  outline: none;
+  box-shadow: 0 1px 0 var(--color-text-primary);
+  border-bottom-color: var(--color-text-primary);
+}
+.input[aria-invalid='true']:focus-visible {
+  box-shadow: 0 1px 0 var(--color-expense);
+  border-bottom-color: var(--color-expense);
+}
+.amount:focus::placeholder {
+  color: transparent;
+}
+.amount:-webkit-autofill {
+  -webkit-text-fill-color: var(--color-text-primary);
+  caret-color: var(--color-text-primary);
+  background-clip: text;
+}
+.selectWrap {
+  position: relative;
+}
+.chevron {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  width: 12px;
+  height: 12px;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: rotate(45deg);
+  pointer-events: none;
+  content: '';
+}
+.selectTrigger {
+  text-align: left;
+  padding-right: 32px;
+  cursor: pointer;
+}
+.placeholder {
+  color: var(--color-text-muted);
+}
+.selectTrigger[aria-expanded='true'] .chevron {
+  transform: rotate(225deg);
+}
+.categoryList {
+  position: absolute;
+  inset: calc(100% + 4px) 0 auto;
+  z-index: 4;
+  max-height: 308px;
+  overflow-y: auto;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #714b9c, #50318e 52%, #5035b2);
+  box-shadow: 0 6px 22px rgb(0 0 0 / 35%);
+  scrollbar-width: thin;
+  scrollbar-color: #c3afd9 transparent;
+}
+.categoryOption {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 20px;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-primary);
+  text-align: left;
+  font-size: 16px;
+}
+.categoryOption:hover,
+.categoryOption:focus-visible {
+  color: var(--color-expense);
+  background: rgb(255 255 255 / 20%);
+  font-family: 'Transaction Poppins Semibold', var(--font-family-base);
+  font-weight: 600;
+  outline: none;
+}
+.categoryList:has(.categoryOption:hover)
+  .categoryOption:focus-visible:not(:hover) {
+  color: var(--color-text-primary);
+  background: transparent;
+  font-family: inherit;
+  font-weight: 400;
+}
+.editType {
+  min-height: 40px;
+  line-height: 24px;
+}
+.editType .typeLabel {
+  color: var(--color-text-primary);
+}
+.editTypeDivider {
+  font-size: 24px;
+  font-weight: 400;
+}
+.categoryDisplay {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .dateWrapper {
   width: 100%;
 }
+.dateWrapper :global(.react-datepicker__input-container) {
+  display: block;
+}
+.dateWrapper :global(.react-datepicker__calendar-icon) {
+  right: 12px;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  color: var(--color-purple);
+  cursor: pointer;
+}
+.dateWrapper :global(.react-datepicker__view-calendar-icon) input.dateInput {
+  padding: 0 38px 8px 8px;
+  text-align: center;
+}
+.comment {
+  min-height: 35px;
+  box-sizing: border-box;
+  padding-bottom: 4px;
+  overflow-y: auto;
+  resize: none;
+  line-height: 24px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-text-muted) transparent;
+}
+.comment::-webkit-scrollbar {
+  width: 4px;
+}
+.comment::-webkit-scrollbar-thumb {
+  background: var(--color-text-muted);
+  border-radius: 4px;
+}
+.comment::-webkit-scrollbar-button {
+  display: none;
+}
 .error {
+  margin-top: 4px;
   color: var(--color-expense);
-  font-size: 13px;
+  font-size: 12px;
+}
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 .submit,
 .cancel {
   width: min(100%, 300px);
   min-height: 50px;
-  align-self: center;
+  padding: 8px 16px;
   border: 0;
   border-radius: 20px;
+  box-shadow: 1px 9px 15px rgb(0 0 0 / 20%);
   font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 .submit {
-  margin-top: 15px;
-  background: var(--gradient-primary);
+  background: linear-gradient(110deg, #efb13f, #9e40ba);
   color: var(--color-text-white);
 }
 .cancel {
@@ -69,6 +300,76 @@
   color: #623f8b;
 }
 .submit:disabled,
-.cancel:disabled {
+.cancel:disabled,
+.switchTrack:disabled {
   opacity: 0.65;
+}
+@media (max-width: 767px) {
+  .typeSwitch {
+    gap: 16px;
+  }
+  .amountDate {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+  .input {
+    padding-left: 20px;
+  }
+  .chevron {
+    right: 22px;
+  }
+  .dateWrapper :global(.react-datepicker__calendar-icon) {
+    right: 16px;
+  }
+  .amount {
+    text-align: left;
+  }
+  .dateWrapper :global(.react-datepicker__view-calendar-icon) input.dateInput {
+    padding-left: 20px;
+    text-align: left;
+  }
+  .comment {
+    min-height: 79px;
+  }
+  .actions {
+    align-items: stretch;
+  }
+  .submit,
+  .cancel {
+    width: 100%;
+  }
+}
+
+/* Date picker styles remain scoped to transaction forms. */
+.field :global(.react-datepicker-popper) {
+  z-index: 5;
+}
+.field :global(.react-datepicker) {
+  font-family: inherit;
+  background: linear-gradient(180deg, #714b9c, #5035b2);
+  color: var(--color-text-primary);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: 0 6px 22px rgb(0 0 0 / 35%);
+}
+.field :global(.react-datepicker__header) {
+  background: transparent;
+  border-bottom: 1px solid var(--form-line);
+}
+.field :global(.react-datepicker__current-month),
+.field :global(.react-datepicker__day-name),
+.field :global(.react-datepicker__day) {
+  color: var(--color-text-primary);
+}
+.field :global(.react-datepicker__day--outside-month),
+.field :global(.react-datepicker__day--disabled) {
+  color: var(--color-text-muted);
+}
+.field :global(.react-datepicker__day--selected),
+.field :global(.react-datepicker__day--keyboard-selected) {
+  background: var(--color-purple);
+  color: white;
+}
+.field :global(.react-datepicker__day:not([aria-disabled='true']):hover) {
+  background: rgb(255 255 255 / 15%);
 }

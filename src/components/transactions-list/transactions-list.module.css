@@ -1,6 +1,6 @@
 .transactions {
-  --transaction-columns: 80px 45px minmax(90px, 1fr) minmax(100px, 1.4fr) 95px
-    100px;
+  --transaction-columns: minmax(68px, 95px) minmax(40px, 83px)
+    minmax(90px, 138px) minmax(80px, 1fr) minmax(74px, 90px) 102px;
   width: 100%;
   min-width: 0;
 }
@@ -10,12 +10,15 @@
   align-items: center;
   column-gap: 8px;
   min-height: 56px;
-  padding: 0 16px;
+  padding: 0 20px;
   border-radius: 8px;
   background: var(--color-surface-purple-transparent);
   color: var(--color-text-primary);
   font-size: 16px;
   font-weight: 600;
+}
+.tableHeader span:nth-child(2) {
+  text-align: left;
 }
 .tableHeader span:nth-child(5) {
   text-align: right;
@@ -26,7 +29,7 @@
   scrollbar-width: thin;
 }
 .listItem {
-  padding: 0 16px;
+  padding: 0 20px;
   border-bottom: 1px solid rgb(255 255 255 / 15%);
 }
 .emptyMessage {
@@ -42,11 +45,9 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    max-height: 520px;
-    scrollbar-width: none;
-  }
-  .list::-webkit-scrollbar {
-    display: none;
+    max-height: min(520px, 65dvh);
+    overflow-y: auto;
+    scrollbar-width: thin;
   }
   .listItem {
     padding: 0;

@@ -10,7 +10,9 @@ const formatBalance = (value) =>
   new Intl.NumberFormat('en-US', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
-  }).format(Number(value) || 0);
+  })
+    .format(Number(value) || 0)
+    .replaceAll(',', ' ');
 
 export default function Balance() {
   const balance = useSelector(selectTotalBalance);

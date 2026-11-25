@@ -7,43 +7,90 @@
   justify-content: center;
   padding: 20px;
   overflow-y: auto;
-  background: rgb(0 0 0 / 65%);
+  background: rgb(0 0 0 / 25%);
+  backdrop-filter: blur(3px);
 }
 .dialog {
   position: relative;
   width: min(100%, 540px);
-  max-height: 94vh;
+  max-height: calc(100dvh - 40px);
   overflow-y: auto;
-  padding: 40px 50px;
-  border-radius: 12px;
-  background: var(--gradient-background);
+  padding: 40px 73px;
+  border-radius: 8px;
+  background:
+    radial-gradient(ellipse at 44% 50%, #402d9b 0%, transparent 66%),
+    radial-gradient(ellipse at 0% 52%, #4d3d95 0%, transparent 58%),
+    radial-gradient(ellipse at 0% 100%, #624e9f 0%, transparent 37%),
+    linear-gradient(160deg, #41326d, #382d51 28%, #4b3070 100%);
   color: var(--color-text-primary);
-  box-shadow: 0 10px 50px rgb(0 0 0 / 35%);
+  box-shadow: 0 10px 50px rgb(0 0 0 / 25%);
 }
 .title {
-  margin-bottom: 24px;
+  margin-bottom: 40px;
   text-align: center;
-  font-size: 26px;
+  font-size: 30px;
   font-weight: 400;
+  line-height: 1.5;
 }
 .close {
   position: absolute;
-  top: 12px;
-  right: 16px;
+  top: 14px;
+  right: 14px;
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  padding: 0;
   border: 0;
   background: transparent;
-  color: var(--color-text-primary);
-  font-size: 28px;
+  color: transparent;
+  font-size: 0;
+}
+.close::before,
+.close::after {
+  position: absolute;
+  width: 22px;
+  height: 1px;
+  background: var(--color-text-primary);
+  content: '';
+  transform: rotate(45deg);
+}
+.close::after {
+  transform: rotate(-45deg);
+}
+.close:disabled {
+  opacity: 0.65;
 }
 @media (max-width: 767px) {
   .backdrop {
-    padding: 0;
+    align-items: flex-start;
+    padding: 60px 0 0;
+    background: transparent;
+    backdrop-filter: none;
   }
   .dialog {
     width: 100%;
-    min-height: 100dvh;
-    max-height: 100dvh;
+    min-height: calc(100dvh - 60px);
+    max-height: calc(100dvh - 60px);
+    padding: 40px 20px;
     border-radius: 0;
-    padding: 60px 20px 32px;
+    background:
+      radial-gradient(ellipse at 45% 32%, #4d37a8 0%, transparent 65%),
+      linear-gradient(
+        160deg,
+        #553d9e 0%,
+        #453885 40%,
+        #62516e 80%,
+        #735d9c 100%
+      );
+  }
+  .title {
+    margin-bottom: 32px;
+    font-size: 24px;
+    line-height: 1.5;
+  }
+  .close {
+    top: 8px;
+    right: 8px;
   }
 }

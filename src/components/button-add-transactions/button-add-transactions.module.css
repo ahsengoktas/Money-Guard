@@ -9,9 +9,9 @@
   place-items: center;
   border: 0;
   border-radius: 50%;
-  background: var(--gradient-primary);
+  background: linear-gradient(110deg, #efb13f, #9e40ba);
   color: var(--color-text-white);
-  font-size: 30px;
+  font-size: 0;
   font-weight: 300;
   line-height: 1;
   box-shadow: 0 6px 15px rgb(0 0 0 / 20%);
@@ -24,4 +24,16 @@
     right: 20px;
     bottom: 20px;
   }
+}
+
+.button::before,
+.button::after {
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  background: currentColor;
+  content: '';
+}
+.button::after {
+  transform: rotate(90deg);
 }

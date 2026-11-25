@@ -1,20 +1,19 @@
 import css from './transactions-item.module.css';
 
 const formatDate = (value) => {
-  const date = new Date(value);
-  if (Number.isNaN(date.getTime())) return '—';
-  return new Intl.DateTimeFormat('en-GB', {
-    day: '2-digit',
-    month: '2-digit',
-    year: '2-digit',
-  }).format(date);
+  const match = /^(\d{4})-(\d{2})-(\d{2})/.exec(value ?? '');
+  if (!match) return '—';
+  const [, year, month, day] = match;
+  return `${day}.${month}.${year.slice(-2)}`;
 };
 
 const formatAmount = (value) =>
   new Intl.NumberFormat('en-US', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
-  }).format(Math.abs(Number(value)));
+  })
+    .format(Math.abs(Number(value)))
+    .replaceAll(',', ' ');
 
 export default function TransactionsItem({
   transaction,
