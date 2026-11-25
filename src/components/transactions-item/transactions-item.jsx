@@ -4,7 +4,9 @@ const formatDate = (value) => {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return '—';
   return new Intl.DateTimeFormat('en-GB', {
-    day: '2-digit', month: '2-digit', year: '2-digit',
+    day: '2-digit',
+    month: '2-digit',
+    year: '2-digit',
   }).format(date);
 };
 
@@ -14,7 +16,12 @@ const formatAmount = (value) =>
     maximumFractionDigits: 2,
   }).format(Math.abs(Number(value)));
 
-export default function TransactionsItem({ transaction, categoryName, onEdit, onDelete }) {
+export default function TransactionsItem({
+  transaction,
+  categoryName,
+  onEdit,
+  onDelete,
+}) {
   const { transactionDate, type, comment, amount } = transaction;
   const isIncome = type === 'INCOME';
   const fields = [
@@ -26,7 +33,9 @@ export default function TransactionsItem({ transaction, categoryName, onEdit, on
   ];
 
   return (
-    <div className={`${css.transaction} ${isIncome ? css.income : css.expense}`}>
+    <div
+      className={`${css.transaction} ${isIncome ? css.income : css.expense}`}
+    >
       {fields.map(([label, value]) => (
         <div className={css.field} key={label}>
           <span className={css.label}>{label}</span>

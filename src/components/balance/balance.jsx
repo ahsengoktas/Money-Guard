@@ -21,9 +21,13 @@ export default function Balance() {
     <section className={css.balance} aria-label="Your balance">
       <p className={css.label}>Your balance</p>
       {loading ? (
-        <p role="status" className={css.amount}>Loading...</p>
+        <p role="status" className={css.amount}>
+          Loading...
+        </p>
       ) : error ? (
-        <p role="alert" className={css.message}>Balance unavailable</p>
+        <p role="alert" className={css.message}>
+          Balance unavailable
+        </p>
       ) : (
         <p className={css.amount}>₴ {formatBalance(balance)}</p>
       )}

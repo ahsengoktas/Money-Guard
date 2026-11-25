@@ -79,7 +79,9 @@ const financeSlice = createSlice({
       .addCase(deleteTransaction.pending, pendingMutation)
       .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
         state.isMutating = false;
-        state.transactions = state.transactions.filter(({ id }) => id !== payload);
+        state.transactions = state.transactions.filter(
+          ({ id }) => id !== payload,
+        );
       })
       .addCase(deleteTransaction.rejected, settledMutation)
       .addCase(logOut.fulfilled, () => initialState)

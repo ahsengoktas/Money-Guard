@@ -70,18 +70,29 @@ export default function HomeTab() {
   return (
     <section className={css.home} aria-label="Home transactions">
       <Balance />
-      {actionError && <p role="alert" className={css.error}>{actionError}</p>}
+      {actionError && (
+        <p role="alert" className={css.error}>
+          {actionError}
+        </p>
+      )}
       {isLoading ? (
-        <p role="status" className={css.status}>Loading transactions...</p>
+        <p role="status" className={css.status}>
+          Loading transactions...
+        </p>
       ) : error ? (
-        <p role="alert" className={css.error}>{String(error)}</p>
+        <p role="alert" className={css.error}>
+          {String(error)}
+        </p>
       ) : (
         <TransactionsList
           onEdit={isMutating ? undefined : setEditing}
           onDelete={isMutating ? undefined : handleDelete}
         />
       )}
-      <ButtonAddTransactions onClick={() => setAddOpen(true)} disabled={isMutating} />
+      <ButtonAddTransactions
+        onClick={() => setAddOpen(true)}
+        disabled={isMutating}
+      />
       {addOpen && (
         <ModalAddTransaction
           categories={categories}

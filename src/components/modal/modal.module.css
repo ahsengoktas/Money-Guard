@@ -20,7 +20,12 @@
   color: var(--color-text-primary);
   box-shadow: 0 10px 50px rgb(0 0 0 / 35%);
 }
-.title { margin-bottom: 24px; text-align: center; font-size: 26px; font-weight: 400; }
+.title {
+  margin-bottom: 24px;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 400;
+}
 .close {
   position: absolute;
   top: 12px;
@@ -31,6 +36,14 @@
   font-size: 28px;
 }
 @media (max-width: 767px) {
-  .backdrop { padding: 0; }
-  .dialog { width: 100%; min-height: 100dvh; max-height: 100dvh; border-radius: 0; padding: 60px 20px 32px; }
+  .backdrop {
+    padding: 0;
+  }
+  .dialog {
+    width: 100%;
+    min-height: 100dvh;
+    max-height: 100dvh;
+    border-radius: 0;
+    padding: 60px 20px 32px;
+  }
 }

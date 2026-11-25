@@ -18,7 +18,12 @@ export default function Modal({ title, onClose, busy = false, children }) {
         if (event.target === event.currentTarget && !busy) onClose();
       }}
     >
-      <section className={css.dialog} role="dialog" aria-modal="true" aria-label={title}>
+      <section
+        className={css.dialog}
+        role="dialog"
+        aria-modal="true"
+        aria-label={title}
+      >
         <button
           type="button"
           className={css.close}

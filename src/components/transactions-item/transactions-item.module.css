@@ -7,13 +7,28 @@
   color: var(--color-text-primary);
   font-size: 14px;
 }
-.field { min-width: 0; }
-.label { display: none; }
-.value { overflow-wrap: anywhere; }
-.field:nth-child(2) { text-align: center; }
-.field:nth-child(5) { text-align: right; font-weight: 600; }
-.income .field:nth-child(5) .value { color: var(--color-income); }
-.expense .field:nth-child(5) .value { color: var(--color-expense); }
+.field {
+  min-width: 0;
+}
+.label {
+  display: none;
+}
+.value {
+  overflow-wrap: anywhere;
+}
+.field:nth-child(2) {
+  text-align: center;
+}
+.field:nth-child(5) {
+  text-align: right;
+  font-weight: 600;
+}
+.income .field:nth-child(5) .value {
+  color: var(--color-income);
+}
+.expense .field:nth-child(5) .value {
+  color: var(--color-expense);
+}
 .actions {
   display: flex;
   min-width: 0;
@@ -31,7 +46,9 @@
   background: transparent;
   color: var(--color-text-muted);
 }
-.editText { display: none; }
+.editText {
+  display: none;
+}
 .deleteButton {
   padding: 4px 12px;
   border: 0;
@@ -41,7 +58,11 @@
   font-size: 14px;
   box-shadow: 1px 9px 15px rgb(0 0 0 / 20%);
 }
-.editButton:disabled, .deleteButton:disabled { cursor: not-allowed; opacity: .65; }
+.editButton:disabled,
+.deleteButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
 @media (max-width: 767px) {
   .transaction {
     display: flex;
@@ -61,19 +82,40 @@
     gap: 12px;
     border-bottom: 1px solid rgb(255 255 255 / 15%);
   }
-  .field:nth-child(5) { border-bottom: 0; }
-  .label { display: inline; flex-shrink: 0; font-weight: 600; }
-  .value { min-width: 0; text-align: right; }
-  .field:nth-child(2) { text-align: right; }
+  .field:nth-child(5) {
+    border-bottom: 0;
+  }
+  .label {
+    display: inline;
+    flex-shrink: 0;
+    font-weight: 600;
+  }
+  .value {
+    min-width: 0;
+    text-align: right;
+  }
+  .field:nth-child(2) {
+    text-align: right;
+  }
   .actions {
     width: 100%;
     min-height: 53px;
     justify-content: space-between;
     padding: 4px 0;
   }
-  .editButton { order: 2; }
-  .editText { display: inline; }
-  .deleteButton { order: 1; }
-  .income { border-left: 5px solid var(--color-income); }
-  .expense { border-left: 5px solid var(--color-expense); }
+  .editButton {
+    order: 2;
+  }
+  .editText {
+    display: inline;
+  }
+  .deleteButton {
+    order: 1;
+  }
+  .income {
+    border-left: 5px solid var(--color-income);
+  }
+  .expense {
+    border-left: 5px solid var(--color-expense);
+  }
 }

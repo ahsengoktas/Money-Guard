@@ -11,8 +11,15 @@ const today = new Date();
 
 const schema = yup.object({
   type: yup.string().oneOf(['INCOME', 'EXPENSE']).required(),
-  amount: yup.number().typeError('Enter a valid amount').moreThan(0, 'Amount must be greater than zero').required(),
-  transactionDate: yup.date().typeError('Choose a date').required('Choose a date'),
+  amount: yup
+    .number()
+    .typeError('Enter a valid amount')
+    .moreThan(0, 'Amount must be greater than zero')
+    .required(),
+  transactionDate: yup
+    .date()
+    .typeError('Choose a date')
+    .required('Choose a date'),
   categoryId: yup.string().required('Choose a category'),
   comment: yup.string().max(200, 'Maximum 200 characters').default(''),
 });
@@ -47,12 +54,16 @@ export default function TransactionForm({
       transactionDate: initialTransaction?.transactionDate
         ? new Date(initialTransaction.transactionDate)
         : today,
-      amount: initialTransaction ? Math.abs(Number(initialTransaction.amount)) : '',
+      amount: initialTransaction
+        ? Math.abs(Number(initialTransaction.amount))
+        : '',
       comment: initialTransaction?.comment ?? '',
     },
   });
   const type = useWatch({ control, name: 'type' });
-  const availableCategories = categories.filter((category) => category.type === type);
+  const availableCategories = categories.filter(
+    (category) => category.type === type,
+  );
   const submitting = busy || isSubmitting;
 
   const save = async (values) => {
@@ -62,7 +73,10 @@ export default function TransactionForm({
       type: values.type,
       categoryId: values.categoryId,
       comment: values.comment.trim(),
-      amount: values.type === 'EXPENSE' ? -Math.abs(values.amount) : Math.abs(values.amount),
+      amount:
+        values.type === 'EXPENSE'
+          ? -Math.abs(values.amount)
+          : Math.abs(values.amount),
     };
     try {
       await onSubmit(payload);
@@ -103,7 +117,9 @@ export default function TransactionForm({
         </label>
       </div>
 
-      <label className={css.label} htmlFor="transaction-amount">Amount</label>
+      <label className={css.label} htmlFor="transaction-amount">
+        Amount
+      </label>
       <input
         className={css.input}
         id="transaction-amount"
@@ -116,7 +132,9 @@ export default function TransactionForm({
       />
       {errors.amount && <p className={css.error}>{errors.amount.message}</p>}
 
-      <label className={css.label} htmlFor="transaction-date">Date</label>
+      <label className={css.label} htmlFor="transaction-date">
+        Date
+      </label>
       <Controller
         name="transactionDate"
         control={control}
@@ -133,9 +151,13 @@ export default function TransactionForm({
           />
         )}
       />
-      {errors.transactionDate && <p className={css.error}>{errors.transactionDate.message}</p>}
+      {errors.transactionDate && (
+        <p className={css.error}>{errors.transactionDate.message}</p>
+      )}
 
-      <label className={css.label} htmlFor="transaction-category">Category</label>
+      <label className={css.label} htmlFor="transaction-category">
+        Category
+      </label>
       <select
         className={css.input}
         id="transaction-category"
@@ -144,12 +166,18 @@ export default function TransactionForm({
       >
         <option value="">Select category</option>
         {availableCategories.map((category) => (
-          <option key={category.id} value={category.id}>{category.name}</option>
+          <option key={category.id} value={category.id}>
+            {category.name}
+          </option>
         ))}
       </select>
-      {errors.categoryId && <p className={css.error}>{errors.categoryId.message}</p>}
+      {errors.categoryId && (
+        <p className={css.error}>{errors.categoryId.message}</p>
+      )}
 
-      <label className={css.label} htmlFor="transaction-comment">Comment</label>
+      <label className={css.label} htmlFor="transaction-comment">
+        Comment
+      </label>
       <textarea
         className={css.input}
         id="transaction-comment"
@@ -160,11 +188,20 @@ export default function TransactionForm({
       />
       {errors.comment && <p className={css.error}>{errors.comment.message}</p>}
 
-      {requestError && <p role="alert" className={css.error}>{requestError}</p>}
+      {requestError && (
+        <p role="alert" className={css.error}>
+          {requestError}
+        </p>
+      )}
       <button className={css.submit} type="submit" disabled={submitting}>
         {submitting ? 'Saving...' : submitLabel}
       </button>
-      <button className={css.cancel} type="button" disabled={submitting} onClick={onCancel}>
+      <button
+        className={css.cancel}
+        type="button"
+        disabled={submitting}
+        onClick={onCancel}
+      >
         Cancel
       </button>
     </form>

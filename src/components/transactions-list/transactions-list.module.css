@@ -1,5 +1,6 @@
 .transactions {
-  --transaction-columns: 80px 45px minmax(90px, 1fr) minmax(100px, 1.4fr) 95px 100px;
+  --transaction-columns: 80px 45px minmax(90px, 1fr) minmax(100px, 1.4fr) 95px
+    100px;
   width: 100%;
   min-width: 0;
 }
@@ -16,7 +17,9 @@
   font-size: 16px;
   font-weight: 600;
 }
-.tableHeader span:nth-child(5) { text-align: right; }
+.tableHeader span:nth-child(5) {
+  text-align: right;
+}
 .list {
   max-height: min(60vh, 600px);
   overflow-y: auto;
@@ -32,7 +35,9 @@
   text-align: center;
 }
 @media (max-width: 767px) {
-  .tableHeader { display: none; }
+  .tableHeader {
+    display: none;
+  }
   .list {
     display: flex;
     flex-direction: column;
@@ -40,6 +45,11 @@
     max-height: 520px;
     scrollbar-width: none;
   }
-  .list::-webkit-scrollbar { display: none; }
-  .listItem { padding: 0; border: 0; }
+  .list::-webkit-scrollbar {
+    display: none;
+  }
+  .listItem {
+    padding: 0;
+    border: 0;
+  }
 }

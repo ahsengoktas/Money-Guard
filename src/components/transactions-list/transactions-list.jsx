@@ -1,5 +1,8 @@
 import { useSelector } from 'react-redux';
-import { selectCategories, selectTransactions } from '../../redux/finance/finance-selectors';
+import {
+  selectCategories,
+  selectTransactions,
+} from '../../redux/finance/finance-selectors';
 import TransactionsItem from '../transactions-item/transactions-item';
 import css from './transactions-list.module.css';
 
@@ -15,8 +18,12 @@ export default function TransactionsList({ onEdit, onDelete }) {
   return (
     <section className={css.transactions} aria-label="Transactions">
       <div className={css.tableHeader} aria-hidden="true">
-        <span>Date</span><span>Type</span><span>Category</span>
-        <span>Comment</span><span>Sum</span><span />
+        <span>Date</span>
+        <span>Type</span>
+        <span>Category</span>
+        <span>Comment</span>
+        <span>Sum</span>
+        <span />
       </div>
       <ul className={css.list}>
         {transactions.map((transaction) => (
