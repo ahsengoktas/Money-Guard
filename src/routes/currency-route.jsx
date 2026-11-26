@@ -1,5 +1,6 @@
 import { Navigate } from 'react-router-dom';
 
+import CurrencyTab from '../components/currency-tab/currency-tab';
 import { useMediaQuery, MOBILE_QUERY } from '../hooks/use-media-query';
 
 // TASK-30: /currency is a mobile-only tab. On wider screens the rates are
@@ -9,8 +10,7 @@ const CurrencyRoute = () => {
 
   if (!isMobile) return <Navigate to="/home" replace />;
 
-  // CurrencyTab (PR #8) is rendered here once it is merged.
-  return null;
+  return <CurrencyTab />;
 };
 
 export default CurrencyRoute;

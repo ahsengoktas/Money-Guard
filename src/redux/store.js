@@ -16,6 +16,7 @@ import { authReducer } from './auth/auth-slice';
 import { financeReducer } from './finance/finance-slice';
 import { currencyReducer } from './currency/currency-slice';
 import { globalReducer } from './global/global-slice';
+import { statisticsReducer } from './statistics/statistics-slice';
 
 // Only the token is saved to localStorage (TASK-5).
 const authPersistConfig = {
@@ -30,7 +31,7 @@ export const store = configureStore({
     finance: financeReducer,
     currency: currencyReducer,
     global: globalReducer,
-    // Agreed key for the remaining slice: statistics
+    statistics: statisticsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
