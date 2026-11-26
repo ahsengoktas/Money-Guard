@@ -68,7 +68,10 @@ export default function HomeTab() {
 
   return (
     <section className={css.home} aria-label="Home transactions">
-      <Balance />
+      {/* On tablet/desktop Balance is shown in the dashboard sidebar. */}
+      <div className={css.mobileBalance}>
+        <Balance />
+      </div>
       {isLoading ? (
         <p role="status" className={css.status}>
           Loading transactions...

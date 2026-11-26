@@ -1,0 +1,85 @@
+/* Mobile: three 44px icon buttons in a centred row. */
+.list {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: var(--color-text-primary);
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
+  background-color: rgb(255 255 255 / 40%);
+  transition:
+    background-color 250ms ease,
+    box-shadow 250ms ease;
+}
+
+.icon svg {
+  width: 32px;
+  height: 32px;
+  fill: var(--color-surface-purple);
+  transition: fill 250ms ease;
+}
+
+.active .icon {
+  background-color: var(--color-purple);
+  box-shadow: 0 3px 10px rgb(115 74 239 / 50%);
+}
+
+.active .icon svg {
+  fill: var(--color-text-primary);
+}
+
+.label {
+  display: none;
+}
+
+.link:hover .icon,
+.link:focus-visible .icon {
+  box-shadow: 0 3px 10px rgb(74 86 226 / 50%);
+}
+
+/* Tablet and desktop: a vertical list with small icons and labels. */
+@media (min-width: 768px) {
+  .list {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
+  .mobileOnly {
+    display: none;
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+  }
+
+  .icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .label {
+    display: inline;
+  }
+
+  .active .label {
+    font-weight: 700;
+  }
+}
