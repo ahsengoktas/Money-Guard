@@ -1,12 +1,4 @@
-@font-face {
-  font-family: 'Transaction Poppins Semibold';
-  src: url('@fontsource/poppins/files/poppins-latin-600-normal.woff2')
-    format('woff2');
-  font-weight: 600;
-  font-display: swap;
-}
 .form {
-  --form-line: rgb(255 255 255 / 30%);
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -32,10 +24,6 @@
   border: 0;
   font-size: 16px;
   font-weight: 600;
-}
-.typeSwitch,
-.amount {
-  font-family: 'Transaction Poppins Semibold', var(--font-family-base);
 }
 .typeSwitch label {
   cursor: pointer;
@@ -113,7 +101,7 @@
   height: 35px;
   padding: 0 8px 8px;
   border: 0;
-  border-bottom: 1px solid var(--form-line);
+  border-bottom: 1px solid var(--color-border-muted);
   border-radius: 0;
   background: transparent;
   color: var(--color-text-primary);
@@ -181,10 +169,10 @@
   max-height: 308px;
   overflow-y: auto;
   border-radius: 8px;
-  background: linear-gradient(180deg, #714b9c, #50318e 52%, #5035b2);
+  background: var(--gradient-transaction-dropdown);
   box-shadow: 0 6px 22px rgb(0 0 0 / 35%);
   scrollbar-width: thin;
-  scrollbar-color: #c3afd9 transparent;
+  scrollbar-color: var(--color-dropdown-scrollbar) transparent;
 }
 .categoryOption {
   display: block;
@@ -200,8 +188,7 @@
 .categoryOption:hover,
 .categoryOption:focus-visible {
   color: var(--color-expense);
-  background: rgb(255 255 255 / 20%);
-  font-family: 'Transaction Poppins Semibold', var(--font-family-base);
+  background: var(--color-surface-highlight);
   font-weight: 600;
   outline: none;
 }
@@ -209,17 +196,14 @@
   .categoryOption:focus-visible:not(:hover) {
   color: var(--color-text-primary);
   background: transparent;
-  font-family: inherit;
   font-weight: 400;
 }
 .editType {
   min-height: 40px;
   line-height: 24px;
 }
-.editType .typeLabel {
-  color: var(--color-text-primary);
-}
 .editTypeDivider {
+  color: var(--color-text-secondary);
   font-size: 24px;
   font-weight: 400;
 }
@@ -285,19 +269,19 @@
   padding: 8px 16px;
   border: 0;
   border-radius: 20px;
-  box-shadow: 1px 9px 15px rgb(0 0 0 / 20%);
+  box-shadow: var(--shadow-transaction-action);
   font-size: 18px;
   font-weight: 400;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 .submit {
-  background: linear-gradient(110deg, #efb13f, #9e40ba);
+  background: var(--gradient-transaction-action);
   color: var(--color-text-white);
 }
 .cancel {
   background: var(--color-surface-light);
-  color: #623f8b;
+  color: var(--color-transaction-secondary);
 }
 .submit:disabled,
 .cancel:disabled,
@@ -346,7 +330,7 @@
 }
 .field :global(.react-datepicker) {
   font-family: inherit;
-  background: linear-gradient(180deg, #714b9c, #5035b2);
+  background: var(--gradient-transaction-calendar);
   color: var(--color-text-primary);
   border: 0;
   border-radius: 8px;
@@ -354,7 +338,7 @@
 }
 .field :global(.react-datepicker__header) {
   background: transparent;
-  border-bottom: 1px solid var(--form-line);
+  border-bottom: 1px solid var(--color-border-muted);
 }
 .field :global(.react-datepicker__current-month),
 .field :global(.react-datepicker__day-name),
@@ -368,8 +352,8 @@
 .field :global(.react-datepicker__day--selected),
 .field :global(.react-datepicker__day--keyboard-selected) {
   background: var(--color-purple);
-  color: white;
+  color: var(--color-text-white);
 }
 .field :global(.react-datepicker__day:not([aria-disabled='true']):hover) {
-  background: rgb(255 255 255 / 15%);
+  background: var(--color-surface-hover);
 }

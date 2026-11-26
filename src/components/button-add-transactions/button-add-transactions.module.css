@@ -9,7 +9,7 @@
   place-items: center;
   border: 0;
   border-radius: 50%;
-  background: linear-gradient(110deg, #efb13f, #9e40ba);
+  background: var(--gradient-transaction-action);
   color: var(--color-text-white);
   font-size: 0;
   font-weight: 300;

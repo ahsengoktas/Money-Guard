@@ -20,10 +20,52 @@
   --color-surface-glass: rgb(255 255 255 / 10%);
   --color-surface-light: #fcfcfc;
   --color-border: #e0e0e0;
+  --color-border-muted: rgb(255 255 255 / 30%);
+  --color-surface-highlight: rgb(255 255 255 / 20%);
+  --color-surface-hover: rgb(255 255 255 / 15%);
+
+  /* Layout */
+  --layout-mobile-gutter: 20px;
 
   /* Transaction colors */
   --color-income: #ffb627;
   --color-expense: #ff868d;
+
+  /* Transaction surfaces */
+  --color-transaction-secondary: #623f8b;
+  --color-dropdown-scrollbar: #c3afd9;
+  --gradient-transaction-action: linear-gradient(110deg, #efb13f, #9e40ba);
+  --gradient-transaction-dropdown: linear-gradient(
+    180deg,
+    #714b9c,
+    #50318e 52%,
+    #5035b2
+  );
+  --gradient-transaction-calendar: linear-gradient(180deg, #714b9c, #5035b2);
+  --gradient-transaction-modal:
+    radial-gradient(ellipse at 44% 50%, #402d9b 0%, transparent 66%),
+    radial-gradient(ellipse at 0% 52%, #4d3d95 0%, transparent 58%),
+    radial-gradient(ellipse at 0% 100%, #624e9f 0%, transparent 37%),
+    linear-gradient(160deg, #41326d, #382d51 28%, #4b3070 100%);
+  --gradient-transaction-modal-mobile:
+    radial-gradient(ellipse at 100% 0%, #453884 0%, transparent 54%),
+    linear-gradient(180deg, #553d9e 0%, #4935ae 40%, transparent 96%),
+    linear-gradient(110deg, #554960, #6b4f8f);
+  --shadow-transaction-action: 1px 9px 15px rgb(0 0 0 / 20%);
+
+  /* Currency surfaces */
+  --gradient-currency-mobile:
+    radial-gradient(ellipse at 55% 62%, #382596 0%, transparent 72%),
+    linear-gradient(115deg, #402790, #302288 70%, #46329c);
+  --gradient-currency-tablet:
+    radial-gradient(ellipse at 73% 22%, #442493 0%, transparent 72%),
+    linear-gradient(115deg, #302079, #33217d 54%, #40268a);
+  --gradient-currency-desktop:
+    radial-gradient(ellipse at 48% 39%, #392594 0%, transparent 74%),
+    linear-gradient(105deg, #3a2389, #421e98 55%, #302378);
+  --color-currency-wave-light: #d8c9ff;
+  --color-currency-wave-dark: #7851cc;
+  --color-currency-wave-marker: #5745a0;
 
   /* Statistics chart colors */
   --color-chart-1: #00ad84;
