@@ -1,7 +1,9 @@
 import { Suspense, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 
+import Loader from '../../components/loader/loader';
+import { selectIsLoading } from '../../redux/global/global-selectors';
 import Header from '../../components/header/header';
 import Navigation from '../../components/navigation/navigation';
 import Balance from '../../components/balance/balance';
@@ -14,6 +16,7 @@ import css from './dashboard-page.module.css';
 // tab; on mobile Balance lives inside HomeTab and Currency has its own tab.
 const DashboardPage = () => {
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
   const isMobile = useMediaQuery(MOBILE_QUERY);
 
   // Balance is visible on the statistics tab too, so load it here as well.
@@ -34,7 +37,7 @@ const DashboardPage = () => {
           {!isMobile && <div className={css.currency} />}
         </aside>
         <main className={css.content}>
-          <Suspense fallback={null}>
+          <Suspense fallback={isLoading ? null : <Loader />}>
             <Outlet />
           </Suspense>
         </main>

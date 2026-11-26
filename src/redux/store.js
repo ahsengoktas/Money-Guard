@@ -15,6 +15,7 @@ import storage from 'redux-persist/es/storage';
 import { authReducer } from './auth/auth-slice';
 import { financeReducer } from './finance/finance-slice';
 import { currencyReducer } from './currency/currency-slice';
+import { globalReducer } from './global/global-slice';
 
 // Only the token is saved to localStorage (TASK-5).
 const authPersistConfig = {
@@ -28,7 +29,8 @@ export const store = configureStore({
     auth: persistReducer(authPersistConfig, authReducer),
     finance: financeReducer,
     currency: currencyReducer,
-    // Agreed keys for the other slices: statistics, global
+    global: globalReducer,
+    // Agreed key for the remaining slice: statistics
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
