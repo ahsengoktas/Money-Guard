@@ -40,14 +40,17 @@ export const getExpenseCategories = (categoriesSummary = []) =>
         FALLBACK_COLORS[index % FALLBACK_COLORS.length],
     }));
 
-// "8 700.00" style used across the app.
-export const formatAmount = (value) =>
-  new Intl.NumberFormat('en-US', {
+// "8 700.00" style used across the app. Sums in the table are shown without a
+// sign; pass keepSign for values that can be negative, such as the balance.
+export const formatAmount = (value, { keepSign = false } = {}) => {
+  const number = Number(value) || 0;
+  return new Intl.NumberFormat('en-US', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   })
-    .format(Math.abs(Number(value) || 0))
+    .format(keepSign ? number : Math.abs(number))
     .replaceAll(',', ' ');
+};
 
 // Years offered in the filter: the current one and the five before it.
 export const getYearOptions = (currentYear, count = 6) =>
