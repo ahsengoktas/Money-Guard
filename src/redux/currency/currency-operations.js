@@ -7,7 +7,9 @@ import {
   writeCurrencyCache,
 } from './currency-cache.js';
 
-const MONOBANK_URL = 'https://api.monobank.ua/bank/currency';
+const getCurrencyApiUrl = () =>
+  import.meta.env?.VITE_CURRENCY_API_URL ??
+  globalThis.process?.env?.VITE_CURRENCY_API_URL;
 const REQUEST_TIMEOUT_MS = 10_000;
 
 export const fetchCurrencyRates = createAsyncThunk(
@@ -15,10 +17,17 @@ export const fetchCurrencyRates = createAsyncThunk(
   async (_, { rejectWithValue, signal }) => {
     const cached = readCurrencyCache();
     if (cached && isFresh(cached.updatedAt)) return cached;
+    const apiUrl = getCurrencyApiUrl();
 
+    if (!apiUrl) {
+      return rejectWithValue({
+        message: 'Currency API URL is not configured.',
+        cached,
+      });
+    }
     try {
       // Public API: use a separate client, never the authenticated wallet API.
-      const { data } = await axios.get(MONOBANK_URL, {
+      const { data } = await axios.get(apiUrl, {
         timeout: REQUEST_TIMEOUT_MS,
         signal,
       });
