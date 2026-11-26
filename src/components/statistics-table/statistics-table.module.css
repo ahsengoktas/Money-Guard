@@ -1,0 +1,110 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
+
+.table thead th {
+  height: 56px;
+  padding: 0 16px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: left;
+  background: var(--color-surface-glass);
+}
+
+.table thead th:first-child {
+  border-radius: 8px 0 0 8px;
+}
+
+.table thead th:last-child {
+  border-radius: 0 8px 8px 0;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid rgb(255 255 255 / 41%);
+  box-shadow: 0 1px 0 rgb(0 0 0 / 5%);
+}
+
+.table tbody th,
+.table tbody td {
+  height: 53px;
+  padding: 0 16px;
+  font-weight: 400;
+}
+
+.category {
+  text-align: left;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.swatch {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 2px;
+}
+
+.table .sum {
+  text-align: right;
+}
+
+.table .empty {
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.totals {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 16px 0 0;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+}
+
+.total dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.expense {
+  color: var(--color-expense);
+}
+
+.income {
+  color: var(--color-income);
+}
+
+@media (min-width: 1280px) {
+  .table thead th:first-child {
+    padding-left: 28px;
+  }
+
+  .table thead th:last-child,
+  .table .sum {
+    padding-right: 28px;
+  }
+
+  .table tbody th:first-child {
+    padding-left: 28px;
+  }
+
+  .totals {
+    padding: 0 28px;
+  }
+}

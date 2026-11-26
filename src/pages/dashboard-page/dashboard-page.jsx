@@ -7,6 +7,7 @@ import { selectIsLoading } from '../../redux/global/global-selectors';
 import Header from '../../components/header/header';
 import Navigation from '../../components/navigation/navigation';
 import Balance from '../../components/balance/balance';
+import Currency from '../../components/currency/currency';
 import { fetchBalance } from '../../redux/finance/finance-operations';
 import { useMediaQuery, MOBILE_QUERY } from '../../hooks/use-media-query';
 import css from './dashboard-page.module.css';
@@ -33,8 +34,11 @@ const DashboardPage = () => {
             <Navigation />
             {!isMobile && <Balance />}
           </div>
-          {/* The Currency component (PR #8) is mounted here on tablet/desktop. */}
-          {!isMobile && <div className={css.currency} />}
+          {!isMobile && (
+            <div className={css.currency}>
+              <Currency />
+            </div>
+          )}
         </aside>
         <main className={css.content}>
           <Suspense fallback={isLoading ? null : <Loader />}>

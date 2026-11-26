@@ -1,0 +1,30 @@
+.chart {
+  position: relative;
+  width: 280px;
+  max-width: 100%;
+  aspect-ratio: 1;
+  margin: 0 auto;
+}
+
+.balance {
+  position: absolute;
+  inset: 50% 0 auto;
+  transform: translateY(-50%);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .chart {
+    width: 336px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .chart {
+    width: 288px;
+  }
+}
