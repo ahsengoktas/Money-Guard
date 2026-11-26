@@ -1,22 +1,29 @@
 import logo from '../../assets/icons/logo.svg';
-import coinsLeft from '../../assets/images/coins-left.png';
-import coinsRight from '../../assets/images/coins-right.png';
+import coinsLeft from '../../assets/images/golden-coins-left.png';
+import coinsRight from '../../assets/images/golden-coins-right.png';
+import moneyLeft from '../../assets/images/money-left.png';
+import moneyRight from '../../assets/images/money-right.png';
 import css from './auth-layout.module.css';
+
+// Figma backgrounds: golden coins on login, falling dollars on register.
+// They are decorative and hidden on mobile, as in the design.
+const BACKGROUNDS = {
+  login: { left: coinsLeft, right: coinsRight },
+  register: { left: moneyLeft, right: moneyRight },
+};
 
 // Shared background, card and logo for the login and register pages.
 const AuthLayout = ({ variant = 'login', children }) => {
+  const background = BACKGROUNDS[variant];
+
   return (
     <main
       className={
         variant === 'register' ? `${css.page} ${css.register}` : css.page
       }
     >
-      {variant === 'login' && (
-        <>
-          <img className={css.coinsLeft} src={coinsLeft} alt="" />
-          <img className={css.coinsRight} src={coinsRight} alt="" />
-        </>
-      )}
+      <img className={css.imageLeft} src={background.left} alt="" />
+      <img className={css.imageRight} src={background.right} alt="" />
       <div className={css.card}>
         <div className={css.logo}>
           <img className={css.logoIcon} src={logo} alt="" />

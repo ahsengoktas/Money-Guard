@@ -13,8 +13,8 @@
     #101010;
 }
 
-.coinsLeft,
-.coinsRight {
+.imageLeft,
+.imageRight {
   display: none;
 }
 
@@ -55,29 +55,36 @@
     padding: 40px 20px;
   }
 
-  .coinsLeft,
-  .coinsRight {
+  /* Tablet: positions from the Figma tablet frames (images are 720px tall). */
+  .imageLeft,
+  .imageRight {
     position: absolute;
     display: block;
-    height: 100%;
+    width: auto;
     max-width: none;
-    object-fit: cover;
-    object-position: bottom;
+    height: 720px;
     pointer-events: none;
+    user-select: none;
   }
 
-  .coinsLeft {
-    top: 0;
-    left: 0;
-    width: 374px;
-    opacity: 0.6;
+  .imageLeft {
+    top: -204px;
+    left: -58px;
   }
 
-  .coinsRight {
+  .imageRight {
+    top: 391px;
+    left: 474px;
+  }
+
+  .register .imageLeft {
     top: 0;
-    left: calc(50% + 28px);
-    width: 615px;
-    opacity: 0.4;
+    left: -70px;
+  }
+
+  .register .imageRight {
+    top: 6px;
+    left: 552px;
   }
 
   .card {
@@ -100,5 +107,27 @@
 
   .logoText {
     font-size: 27px;
+  }
+}
+
+/* Desktop: the images fill the height and sit on the left and right edges. */
+@media (min-width: 1280px) {
+  .imageLeft,
+  .imageRight,
+  .register .imageLeft,
+  .register .imageRight {
+    top: 0;
+    height: 100%;
+  }
+
+  .imageLeft,
+  .register .imageLeft {
+    left: 0;
+  }
+
+  .imageRight,
+  .register .imageRight {
+    right: 0;
+    left: auto;
   }
 }
