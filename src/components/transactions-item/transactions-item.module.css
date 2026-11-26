@@ -1,0 +1,141 @@
+.transaction {
+  display: grid;
+  grid-template-columns: var(--transaction-columns);
+  align-items: center;
+  column-gap: 8px;
+  min-height: 53px;
+  color: var(--color-text-primary);
+  font-size: 14px;
+}
+.field {
+  min-width: 0;
+}
+.label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.value {
+  overflow-wrap: anywhere;
+}
+.field:nth-child(2) {
+  text-align: left;
+  padding-left: 16px;
+}
+.field:nth-child(5) {
+  text-align: right;
+  font-weight: 600;
+}
+.income .field:nth-child(5) .value {
+  color: var(--color-income);
+}
+.expense .field:nth-child(5) .value {
+  color: var(--color-expense);
+}
+.actions {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.editButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 4px;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-muted);
+}
+.editText {
+  display: none;
+}
+.deleteButton {
+  padding: 4px 12px;
+  border: 0;
+  border-radius: 20px;
+  background: linear-gradient(110deg, #efb13f, #9e40ba);
+  color: var(--color-text-primary);
+  font-size: 14px;
+  box-shadow: 1px 9px 15px rgb(0 0 0 / 20%);
+}
+.editButton:disabled,
+.deleteButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+@media (max-width: 767px) {
+  .transaction {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding: 0;
+    border-radius: 10px;
+    background: var(--color-surface-glass);
+    font-size: 16px;
+  }
+  .field {
+    display: flex;
+    width: 100%;
+    min-height: 47px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 20px 8px 15px;
+    border-bottom: 1px solid rgb(255 255 255 / 15%);
+  }
+  .deleteButton {
+    font-size: 12px;
+  }
+  .editText {
+    font-size: 12px;
+  }
+  .label {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
+    white-space: normal;
+    flex-shrink: 0;
+    font-weight: 600;
+  }
+  .value {
+    min-width: 0;
+    text-align: right;
+  }
+  .field:nth-child(2) {
+    text-align: right;
+    padding-left: 15px;
+  }
+  .actions {
+    width: 100%;
+    min-height: 47px;
+    justify-content: space-between;
+    padding: 4px 20px 4px 15px;
+  }
+  .editButton {
+    order: 2;
+  }
+  .editText {
+    display: inline;
+  }
+  .deleteButton {
+    order: 1;
+  }
+  .transaction {
+    overflow: hidden;
+  }
+  .income {
+    border-left: 5px solid var(--color-income);
+  }
+  .expense {
+    border-left: 5px solid var(--color-expense);
+  }
+}

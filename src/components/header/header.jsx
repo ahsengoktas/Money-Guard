@@ -17,7 +17,7 @@ const Header = () => {
 
   return (
     <header className={css.header}>
-      <Link className={css.logo} to="/dashboard" aria-label="Money Guard home">
+      <Link className={css.logo} to="/home" aria-label="Money Guard home">
         <img className={css.logoIcon} src={logo} alt="" />
         <span className={css.logoText}>Money Guard</span>
       </Link>

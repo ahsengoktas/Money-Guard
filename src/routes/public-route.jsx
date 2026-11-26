@@ -4,7 +4,7 @@ import { Navigate } from 'react-router-dom';
 import { selectIsLoggedIn, selectToken } from '../redux/auth/auth-selectors';
 
 // Pages only for guests, such as login and register (TASK-7).
-const PublicRoute = ({ component, redirectTo = '/dashboard' }) => {
+const PublicRoute = ({ component, redirectTo = '/home' }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const token = useSelector(selectToken);
 
