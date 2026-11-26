@@ -1,7 +1,79 @@
 .page {
   min-height: 100vh;
+  color: var(--color-text-primary);
   background:
     radial-gradient(circle at 10% 30%, rgb(112 0 255 / 35%), transparent 40%),
     radial-gradient(circle at 90% 90%, rgb(158 64 186 / 30%), transparent 40%),
     var(--gradient-background);
+  background-attachment: fixed;
+}
+
+/* Mobile: navigation on top, then the active tab. */
+.sidebar {
+  padding: 12px 20px 0;
+}
+
+.content {
+  padding: 12px 20px 40px;
+}
+
+/* Tablet: navigation + balance on the left, currency on the right. */
+@media (min-width: 768px) {
+  .sidebar {
+    display: flex;
+    gap: 32px;
+    padding: 40px 32px 0;
+  }
+
+  .summary {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    width: 336px;
+  }
+
+  /* In the design the rates card starts right under the header. */
+  .currency {
+    flex: 1;
+    min-height: 214px;
+    margin-top: -40px;
+  }
+
+  .content {
+    padding: 20px 32px 40px;
+  }
+}
+
+/* Desktop: a 480px sidebar with a divider and the tab content on the right. */
+@media (min-width: 1280px) {
+  .container {
+    display: grid;
+    grid-template-columns: 480px 1fr;
+    min-height: calc(100vh - 80px);
+  }
+
+  .sidebar {
+    flex-direction: column;
+    gap: 32px;
+    padding: 40px 0 0;
+    border-right: 1px solid var(--color-text-secondary);
+  }
+
+  .summary {
+    width: auto;
+  }
+
+  .currency {
+    flex: none;
+    margin-top: 0;
+  }
+
+  .summary > nav {
+    padding-left: 16px;
+  }
+
+  .content {
+    min-width: 0;
+    padding: 46px 16px 40px 69px;
+  }
 }
