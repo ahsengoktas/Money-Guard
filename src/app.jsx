@@ -1,7 +1,9 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
+import Loader from './components/loader/loader';
+import { selectIsLoading } from './redux/global/global-selectors';
 import { refreshUser } from './redux/auth/auth-operations';
 import PrivateRoute from './routes/private-route';
 import PublicRoute from './routes/public-route';
@@ -24,37 +26,40 @@ const NotFoundPage = lazy(
 
 const App = () => {
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
   return (
-    // The Loader component (TASK-36–39) can replace this fallback.
-    <Suspense fallback={null}>
-      <Routes>
-        <Route
-          path="/register"
-          element={<PublicRoute component={<RegistrationPage />} />}
-        />
-        <Route
-          path="/login"
-          element={<PublicRoute component={<LoginPage />} />}
-        />
-        {/* TASK-23 / TASK-30: dashboard tabs share one private layout. */}
-        <Route
-          path="/"
-          element={<PrivateRoute component={<DashboardPage />} />}
-        >
-          <Route index element={<Navigate to="/home" replace />} />
-          <Route path="home" element={<HomeTab />} />
-          <Route path="statistics" element={<StatisticsTab />} />
-          <Route path="currency" element={<CurrencyRoute />} />
-          <Route path="dashboard" element={<Navigate to="/home" replace />} />
-        </Route>
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </Suspense>
+    <>
+      {isLoading && <Loader />}
+      <Suspense fallback={isLoading ? null : <Loader />}>
+        <Routes>
+          <Route
+            path="/register"
+            element={<PublicRoute component={<RegistrationPage />} />}
+          />
+          <Route
+            path="/login"
+            element={<PublicRoute component={<LoginPage />} />}
+          />
+          {/* TASK-23 / TASK-30: dashboard tabs share one private layout. */}
+          <Route
+            path="/"
+            element={<PrivateRoute component={<DashboardPage />} />}
+          >
+            <Route index element={<Navigate to="/home" replace />} />
+            <Route path="home" element={<HomeTab />} />
+            <Route path="statistics" element={<StatisticsTab />} />
+            <Route path="currency" element={<CurrencyRoute />} />
+            <Route path="dashboard" element={<Navigate to="/home" replace />} />
+          </Route>
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
+    </>
   );
 };
 
