@@ -1,0 +1,30 @@
+.balance {
+  min-height: 80px;
+  padding: 8px 32px 12px;
+  border-radius: 8px;
+  background: var(--color-surface-glass);
+  color: var(--color-text-primary);
+}
+.label {
+  color: var(--color-text-muted);
+  font-size: 12px;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+.amount {
+  margin-top: 8px;
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.message {
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+@media (min-width: 1280px) {
+  .balance {
+    padding-inline: 56px;
+  }
+}
