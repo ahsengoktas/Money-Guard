@@ -54,7 +54,9 @@ const Chart = ({ categories, balance }) => {
         aria-label="Expenses by category"
         role="img"
       />
-      <p className={css.balance}>₴ {formatAmount(balance)}</p>
+      <p className={css.balance}>
+        ₴ {formatAmount(balance, { keepSign: true })}
+      </p>
     </div>
   );
 };

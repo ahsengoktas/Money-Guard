@@ -33,6 +33,7 @@ test('amounts use the app format', () => {
   assert.equal(formatAmount(-22549.24), '22 549.24');
   assert.equal(formatAmount(300), '300.00');
   assert.equal(formatAmount(null), '0.00');
+  assert.equal(formatAmount(-1000, { keepSign: true }), '-1 000.00');
 });
 
 test('year options start from the current year', () => {
