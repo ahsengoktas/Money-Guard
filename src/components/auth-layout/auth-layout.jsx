@@ -1,8 +1,8 @@
 import logo from '../../assets/icons/logo.svg';
-import coinsLeft from '../../assets/images/golden-coins-left.png';
-import coinsRight from '../../assets/images/golden-coins-right.png';
-import moneyLeft from '../../assets/images/money-left.png';
-import moneyRight from '../../assets/images/money-right.png';
+import coinsLeft from '../../assets/images/golden-coins-left.webp';
+import coinsRight from '../../assets/images/golden-coins-right.webp';
+import moneyLeft from '../../assets/images/money-left.webp';
+import moneyRight from '../../assets/images/money-right.webp';
 import css from './auth-layout.module.css';
 
 // Figma backgrounds: golden coins on login, falling dollars on register.
