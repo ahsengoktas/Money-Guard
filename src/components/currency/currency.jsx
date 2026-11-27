@@ -1,5 +1,4 @@
 import { useEffect, useId } from 'react';
-import '@fontsource/poppins/600.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCurrencyRates } from '../../redux/currency/currency-operations';
 import {
@@ -25,8 +24,16 @@ function CurrencyWave({ rates }) {
     >
       <defs>
         <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#d8c9ff" stopOpacity="0.78" />
-          <stop offset="100%" stopColor="#7851cc" stopOpacity="0.08" />
+          <stop
+            offset="0%"
+            stopColor="var(--color-currency-wave-light)"
+            stopOpacity="0.78"
+          />
+          <stop
+            offset="100%"
+            stopColor="var(--color-currency-wave-dark)"
+            stopOpacity="0.20"
+          />
         </linearGradient>
       </defs>
       <g className={css.compactWave}>
@@ -37,35 +44,43 @@ function CurrencyWave({ rates }) {
         <path
           d="M0 115 45 68 Q63 51 82 68 L163 157 Q183 179 205 158 L346 26 Q367 3 386 26 L419 66 Q438 82 458 66 Q470 53 480 58"
           fill="none"
-          stroke="#ff868d"
+          stroke="var(--color-expense)"
           strokeWidth="1"
           vectorEffect="non-scaling-stroke"
         />
-        <g fill="#5745a0" stroke="#ff868d" strokeWidth="1.2">
+        <g
+          fill="var(--color-currency-wave-marker)"
+          stroke="var(--color-expense)"
+          strokeWidth="1.2"
+        >
           <circle cx="63" cy="59.5" r="4" />
           <circle cx="367" cy="14.5" r="4" />
         </g>
       </g>
       <g className={css.desktopWave}>
         <path
-          d="M0 120 42 91 Q62 77 82 90 L163 144 Q183 158 205 145 L346 58 Q367 44 386 57 L419 79 Q438 92 458 79 Q470 68 480 74 V218 H0Z"
+          d="M0 110 42 81 Q62 67 82 80 L163 135 Q183 150 205 135 L346 46 Q367 32 386 46 L419 69 Q438 82 458 68 Q470 58 480 63 V218 H0Z"
           fill={`url(#${gradientId})`}
         />
         <path
           d="M0 99 42 70 Q62 56 82 69 L163 124 Q183 139 205 124 L346 35 Q367 21 386 35 L419 58 Q438 71 458 57 Q470 47 480 52"
           fill="none"
-          stroke="#ff868d"
+          stroke="var(--color-expense)"
           strokeWidth="1.25"
           vectorEffect="non-scaling-stroke"
         />
-        <g fill="#5745a0" stroke="#ff868d" strokeWidth="1">
+        <g
+          fill="var(--color-currency-wave-marker)"
+          stroke="var(--color-expense)"
+          strokeWidth="1"
+        >
           <circle cx="62" cy="63" r="4" />
           <circle cx="367" cy="28" r="4" />
         </g>
       </g>
       <g
         className={css.waveLabels}
-        fill="#ff868d"
+        fill="var(--color-expense)"
         fontSize="12"
         textAnchor="middle"
       >

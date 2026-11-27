@@ -6,10 +6,7 @@
   min-width: 0;
   min-height: 214px;
   overflow: hidden;
-  border-radius: 0 0 8px 8px;
-  background:
-    radial-gradient(ellipse at 55% 75%, #382595 0%, transparent 72%),
-    linear-gradient(125deg, #432794, #302288 58%, #46329c);
+  background: var(--gradient-currency-mobile);
   color: var(--color-text-primary);
 }
 
@@ -26,7 +23,7 @@
 }
 
 .table thead {
-  background: rgb(255 255 255 / 20%);
+  background: var(--color-surface-highlight);
 }
 
 .table thead th {
@@ -90,9 +87,8 @@
 @media (min-width: 768px) {
   .currency {
     min-height: 214px;
-    background:
-      radial-gradient(ellipse at 73% 22%, #442493 0%, transparent 72%),
-      linear-gradient(115deg, #302079, #33217d 54%, #40268a);
+    border-radius: 0 0 8px 8px;
+    background: var(--gradient-currency-tablet);
   }
   .wave {
     height: 102px;
@@ -106,9 +102,7 @@
   .currency {
     min-height: 380px;
     border-radius: 0;
-    background:
-      radial-gradient(ellipse at 48% 39%, #392594 0%, transparent 74%),
-      linear-gradient(105deg, #3a2389, #421e98 55%, #302378);
+    background: var(--gradient-currency-desktop);
   }
 
   .table thead th {

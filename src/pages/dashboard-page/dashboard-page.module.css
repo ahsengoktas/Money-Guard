@@ -14,7 +14,7 @@
 }
 
 .content {
-  padding: 12px 20px 40px;
+  padding: 12px var(--layout-mobile-gutter) 40px;
 }
 
 /* Tablet: navigation + balance on the left, currency on the right. */

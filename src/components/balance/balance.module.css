@@ -26,5 +26,6 @@
 @media (min-width: 1280px) {
   .balance {
     padding-inline: 56px;
+    border-radius: 0;
   }
 }

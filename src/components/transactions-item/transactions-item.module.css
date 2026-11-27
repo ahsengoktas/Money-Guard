@@ -60,10 +60,10 @@
   padding: 4px 12px;
   border: 0;
   border-radius: 20px;
-  background: linear-gradient(110deg, #efb13f, #9e40ba);
+  background: var(--gradient-transaction-action);
   color: var(--color-text-primary);
   font-size: 14px;
-  box-shadow: 1px 9px 15px rgb(0 0 0 / 20%);
+  box-shadow: var(--shadow-transaction-action);
 }
 .editButton:disabled,
 .deleteButton:disabled {
@@ -79,6 +79,7 @@
     border-radius: 10px;
     background: var(--color-surface-glass);
     font-size: 16px;
+    overflow: hidden;
   }
   .field {
     display: flex;
@@ -128,9 +129,6 @@
   }
   .deleteButton {
     order: 1;
-  }
-  .transaction {
-    overflow: hidden;
   }
   .income {
     border-left: 5px solid var(--color-income);

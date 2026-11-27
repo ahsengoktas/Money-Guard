@@ -36,7 +36,7 @@ export default function HomeTab() {
   useEffect(() => {
     dispatch(fetchTransactions());
     dispatch(fetchCategories());
-    dispatch(fetchBalance());
+    // DashboardPage already loads the balance for every tab.
   }, [dispatch]);
 
   const refreshFinancialData = () => {

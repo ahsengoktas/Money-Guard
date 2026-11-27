@@ -2,3 +2,12 @@
   width: 100%;
   min-width: 0;
 }
+
+@media (max-width: 767px) {
+  .tab {
+    /* Only Currency spans the full mobile viewport, unlike the other tabs. */
+    width: auto;
+    margin-top: 12px;
+    margin-inline: calc(-1 * var(--layout-mobile-gutter));
+  }
+}
