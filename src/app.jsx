@@ -7,7 +7,6 @@ import { selectIsLoading } from './redux/global/global-selectors';
 import { refreshUser } from './redux/auth/auth-operations';
 import PrivateRoute from './routes/private-route';
 import PublicRoute from './routes/public-route';
-import CurrencyRoute from './routes/currency-route';
 
 const RegistrationPage = lazy(
   () => import('./pages/registration-page/registration-page'),
@@ -20,6 +19,8 @@ const HomeTab = lazy(() => import('./components/home-tab/home-tab'));
 const StatisticsTab = lazy(
   () => import('./components/statistics-tab/statistics-tab'),
 );
+// TECH-15: the mobile-only currency tab is loaded on demand like the others.
+const CurrencyRoute = lazy(() => import('./routes/currency-route'));
 const NotFoundPage = lazy(
   () => import('./pages/not-found-page/not-found-page'),
 );
